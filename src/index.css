@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Padrão do modo claro */
+:root {
+  --primary-color: white;
+  --primary-color-icon: white;
+  --primary-color-black: black;
+  --primary-color-2: rgb(250, 250, 250);
+  --primary-color-3: rgb(181, 181, 181);
+  --background-color: rgb(255, 255, 255);
+  --background-color-2: rgba(255, 255, 255, 0.9);
+  --secondary-color: #45505b;
+  --terciary-color: #272829;
+  --secondary-color-2: rgb(85, 85, 85);
+  --button-background: rgb(53, 53, 53);
+  --button-text-hover: rgba(24, 54, 82, 0.938);
+  --button-border-color: rgb(53, 53, 53);
+  --button-border-width: 0.1rem;
+  --button-border-style: solid;
+  --button-border2-color: rgb(255, 255, 255);
+  --button-border2-width: 0.1rem;
+  --button-border2-style: solid;
+  --container-border: rgb(163, 163, 163);
+  --btn-color-1: white;
+}
+
+/* Modo noturno */
+[theme="dark"] {
+  --primary-color: black;
+  --primary-color-icon: white;
+  --primary-color-black: white;
+  --primary-color-2: rgb(39, 39, 39);
+  --primary-color-3: rgb(74, 74, 74);
+  --background-color: rgb(33, 33, 33);
+  --background-color-2: rgba(33, 33, 33, 0.7);
+  --secondary-color: white;
+  --terciary-color: white;
+  --secondary-color-2: rgb(170, 170, 170);
+  --button-background: rgb(202, 202, 202);
+  --button-text-hover: rgba(24, 54, 82, 0.938);
+  --button-border: rgb(202, 202, 202) 0.1rem solid;
+  --button-border2: rgb(0, 0, 0) 0.1rem solid;
+  --container-border: rgb(92, 92, 92);
+  --btn-color-1: white;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    color: var(--terciary-color);
+  }
+
+  h3 {
+    color: var(--secondary-color);
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--background-color);
+    height: 500vh;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  p {
+    color: var(--secondary-color-2);
+  }
+}
+
+@layer components {
+  .icon {
+    @apply cursor-pointer h-8;
+  }
+
+  .section__text__p1 {
+    @apply text-center;
+  }
+
+  .title {
+    @apply text-[var(--secondary-color)] text-5xl text-center font-bold;
+  }
+
+  .btn-container {
+    @apply flex justify-center gap-4;
+  }
+
+  .btn {
+    @apply font-semibold transition-all duration-300 ease-in-out rounded-[0.8rem];
+  }
+
+  .btn-color-1,
+  .btn-color-2 {
+    @apply border-[var(--button-border)] text-[var(--secondary-color-2)];
+  }
+}
+
+/* Estilos específicos para os links da navegação */
+#nav-links a {
+  @apply hover:text-[var(--primary-color-icon)] hover:bg-[#0563bb] hover:rounded-[30px];
+}
+
+#nav-links a.active {
+  @apply text-[var(--primary-color-icon)] bg-[#0563bb] rounded-[30px] py-[5px] px-[10px];
+}
+
+/* Centraliza os ícones nos links */
+.navicon {
+  @apply inline-block align-middle;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  /* Ajustes gerais */
+  .title {
+    font-size: 2.5rem !important;
+  }
+
+  section {
+    margin: 0 1rem !important;
+    /* padding-top: 1rem !important; */
+  }
+
+  /* Ajustes para o Profile */
+  #profile {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    padding: 1rem !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  .section__text {
+    text-align: center !important;
+  }
+
+  #socials-container {
+    justify-content: center !important;
+  }
+
+  /* Ajustes para o About */
+  .about-section-container {
+    flex-direction: column !important;
+  }
+
+  /* Ajustes para o Contact */
+  .contact-info-upper-container {
+    flex-direction: column !important;
+  }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+  .section__pic-container {
+    height: 200px !important;
+    width: 200px !important;
+  }
+
+  .title {
+    font-size: 2rem !important;
+  }
+}
