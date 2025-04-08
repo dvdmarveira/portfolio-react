@@ -20,7 +20,7 @@ const Experience = ({ theme }) => {
       id="experience"
       className="relative flex flex-col items-center justify-start min-h-screen py-2 px-4"
     >
-      <p className="section__text__p1 mb-2">Maior afinidade com as demais</p>
+      <p className="section__text__p1">Maior afinidade com as demais</p>
       <h1 className="title text-5xl mb-8 md:mb-16">Tecnologias</h1>
 
       <div className="flex flex-col w-fit md:flex-row md:w-full max-w-6xl justify-center items-stretch gap-4 md:gap-12">

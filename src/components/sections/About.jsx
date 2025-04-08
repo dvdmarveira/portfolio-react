@@ -14,7 +14,7 @@ const About = ({ theme }) => {
       id="about"
       className="relative flex flex-col items-center justify-start min-h-screen px-4"
     >
-      <p className="section__text__p1 mb-2">Saiba mais</p>
+      <p className="section__text__p1">Saiba mais</p>
       <h1 className="title text-5xl mb-8 md:mb-16">Sobre mim</h1>
 
       <div className="flex flex-col md:flex-row w-full max-w-6xl justify-between items-center gap-4 md:gap-16">

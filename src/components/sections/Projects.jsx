@@ -55,7 +55,7 @@ const Projects = ({ theme }) => {
       id="projects"
       className="relative flex flex-col items-center justify-start min-h-screen px-4"
     >
-      <p className="section__text__p1 mb-2">Conheça alguns dos meus</p>
+      <p className="section__text__p1">Conheça alguns dos meus</p>
       <h1 className="title text-5xl mb-10">Projetos</h1>
 
       <div className="w-full max-w-7xl">

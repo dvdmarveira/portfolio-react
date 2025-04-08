@@ -120,7 +120,7 @@
 
 /* Centraliza os ícones nos links */
 .navicon {
-  @apply inline-block align-middle;
+  @apply inline-block align-middle cursor-pointer;
 }
 
 /* Estilos responsivos */
