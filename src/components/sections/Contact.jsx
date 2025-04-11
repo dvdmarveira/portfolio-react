@@ -6,16 +6,16 @@ const Contact = ({ theme }) => {
   return (
     <section
       id="contact"
-      // className="flex justify-center flex-col h-[70vh] pt-16 mx-40 box-border min-h-fit"
-      className="flex justify-center flex-col min-h-[70vh] pt-8 md:pt-16 mx-4 md:mx-40 box-border"
+      // className="flex justify-center flex-col pt-16 mx-40 box-border min-h-fit"
+      className="flex justify-center flex-col md:pt-16 py-20 mx-4 md:mx-40 box-border"
     >
       <p className="section__text__p1">Entre em</p>
       <h1 className="title">Contato</h1>
       <div
         // className="contact-info-upper-container flex justify-center rounded-[2rem] border border-[var(--container-border)] bg-[var(--background-color)] mx-auto my-8 p-2"
-        className="flex flex-col md:flex-row justify-center rounded-[2rem] border border-[var(--container-border)] bg-[var(--background-color)] mx-auto my-8 p-2"
+        className="flex flex-col md:flex-row justify-left rounded-[2rem] border border-[var(--container-border)] bg-[var(--background-color)] mx-auto my-8 p-2"
       >
-        <div className="contact-info-container flex items-center justify-center gap-2 m-4">
+        <div className="contact-info-container flex items-left justify-center gap-2 m-4">
           <img
             src={theme === "dark" ? emailDarkIcon : emailIcon}
             alt="Icone de e-mail"
@@ -30,7 +30,7 @@ const Contact = ({ theme }) => {
             </a>
           </p>
         </div>
-        <div className="contact-info-container flex items-center justify-center gap-2 m-4">
+        <div className="contact-info-container flex items-center justify-center gap-2 m-2">
           <Linkedin className="text-[1.7rem] text-[var(--primary-color-black)]" />
           <p className="text-lg">
             <a

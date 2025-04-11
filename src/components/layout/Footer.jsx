@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="h-[26vh] mx-4">
+    <footer className="pt-40 h-[8vh] mx-4">
       <p className="text-center text-[var(--secondary-color-2)]">
         Deyvid Marques
       </p>

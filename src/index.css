@@ -7,6 +7,8 @@
 
 /* Padrão do modo claro */
 :root {
+  --blue-primary: #0563bb;
+  --blue-light: #d0e6f7;
   --primary-color: white;
   --primary-color-icon: white;
   --primary-color-black: black;
@@ -26,12 +28,13 @@
   --button-border2-width: 0.1rem;
   --button-border2-style: solid;
   --container-border: rgb(163, 163, 163);
+  --nav-bg: white;
   --btn-color-1: white;
 }
 
 /* Modo noturno */
 [theme="dark"] {
-  --primary-color: black;
+  --primary-color: rgb(0, 0, 0);
   --primary-color-icon: white;
   --primary-color-black: white;
   --primary-color-2: rgb(39, 39, 39);
@@ -46,6 +49,7 @@
   --button-border: rgb(202, 202, 202) 0.1rem solid;
   --button-border2: rgb(0, 0, 0) 0.1rem solid;
   --container-border: rgb(92, 92, 92);
+  --nav-bg: rgb(92, 92, 92);
   --btn-color-1: white;
 }
 
@@ -166,7 +170,7 @@
 }
 
 /* Para telas muito pequenas */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .section__pic-container {
     height: 200px !important;
     width: 200px !important;

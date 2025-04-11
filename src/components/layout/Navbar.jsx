@@ -140,7 +140,23 @@ const Navbar = ({ theme, toggleTheme }) => {
         </div>
       </nav>
 
-      <nav id="hamburger-nav" className="flex justify-end mt-5 mr-5 md:hidden">
+      <nav
+        id="hamburger-nav"
+        className="flex justify-between items-center mt-5 mx-5 mb-14 md:hidden"
+      >
+        {/* Botão de tema à esquerda */}
+        <button
+          className="theme-toggle-mobile p-2 text-[var(--secondary-color)]"
+          onClick={toggleTheme}
+          aria-label="Alternar tema"
+        >
+          {theme === "dark" ? (
+            <Sun className="text-2xl" />
+          ) : (
+            <Moon className="text-2xl" />
+          )}
+        </button>
+        
         <div className="hamburger-menu relative inline-block">
           <div
             className={`hamburger-icon flex flex-col justify-between h-6 w-[30px] cursor-pointer ${
@@ -169,21 +185,21 @@ const Navbar = ({ theme, toggleTheme }) => {
             ></span>
           </div>
           <div
-            className={`menu-links absolute top-full right-0 bg-[var(--primary-color)] w-fit overflow-hidden transition-all duration-300 ease-in-out ${
+            className={`menu-links absolute top-8 right-0 bg-[var(--nav-bg)] rounded-3xl w-fit overflow-hidden transition-all duration-300 ease-in-out ${
               menuOpen ? "max-h-[300px]" : "max-h-0"
             }`}
           >
             <li className="list-none">
               <Link
-                to="profile"
+                to="#"
                 spy={true}
                 smooth={true}
                 offset={-10}
                 duration={500}
-                className="block p-[10px] text-center text-2xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
+                className="block p-[10px] text-center text-xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
                 onClick={toggleMenu}
               >
-                Home
+                Início
               </Link>
             </li>
             <li className="list-none">
@@ -193,7 +209,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 smooth={true}
                 offset={-50}
                 duration={500}
-                className="block p-[10px] text-center text-2xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
+                className="block p-[10px] text-center text-xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
                 onClick={toggleMenu}
               >
                 Sobre
@@ -206,7 +222,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 smooth={true}
                 // offset={-80}
                 duration={500}
-                className="block p-[10px] text-center text-2xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
+                className="block p-[10px] text-center text-xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
                 onClick={toggleMenu}
               >
                 Tecnologias
@@ -219,7 +235,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 smooth={true}
                 // offset={-80}
                 duration={500}
-                className="block p-[10px] text-center text-2xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
+                className="block p-[10px] text-center text-xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
                 onClick={toggleMenu}
               >
                 Projetos
@@ -232,12 +248,13 @@ const Navbar = ({ theme, toggleTheme }) => {
                 smooth={true}
                 // offset={-80}
                 duration={500}
-                className="block p-[10px] text-center text-2xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
+                className="block p-[10px] text-center text-xl text-[var(--secondary-color)] no-underline transition-all duration-300 ease-in-out"
                 onClick={toggleMenu}
               >
                 Contato
               </Link>
             </li>
+
           </div>
         </div>
       </nav>

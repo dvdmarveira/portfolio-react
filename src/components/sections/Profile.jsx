@@ -25,7 +25,7 @@ const Profile = () => {
     <section
       id="profile"
       // className="flex justify-center gap-20 h-[80vh] mb-40 pt-16 mx-40 box-border min-h-fit"
-      className="flex flex-col md:flex-row justify-start md:justify-center gap-6 md:gap-20 min-h-[80vh] mb-40 md:mb-40 pt-4 md:pt-16 mx-4 md:mx-40 box-border"
+      className="flex flex-col justify-start md:flex-row md:justify-center gap-6 md:gap-20 min-h-[80vh] mb-40 md:mb-40 pt-4 md:pt-16 mx-4 md:mx-40 box-border"
     >
       <div className="section__pic-container flex h-[250px] w-[250px] self-center text-center">
         <img src={profileImg} alt="Deyvid Marques foto do perfil" />
