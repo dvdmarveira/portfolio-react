@@ -139,14 +139,12 @@ export async function initializeFirestoreData() {
           description:
             "Portfólio desenvolvido com React, TailwindCSS e Firebase.",
           technologies: ["React", "TailwindCSS", "Firebase"],
-          githubUrl: "https://github.com/seu-usuario/portfolio",
           imageUrl: "https://via.placeholder.com/150",
         },
         {
           title: "Sistema de Gerenciamento",
           description: "Sistema web para gerenciamento de tarefas e projetos.",
           technologies: ["React", "Node.js", "MongoDB"],
-          githubUrl: "https://github.com/seu-usuario/sistema-gerenciamento",
           imageUrl: "https://via.placeholder.com/150",
         },
       ];

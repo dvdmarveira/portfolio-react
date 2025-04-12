@@ -21,16 +21,16 @@ import { createObjectURL } from "../../../utils/fileUtils";
 // Função para obter a imagem correta para um projeto
 const getProjectImage = (projectName) => {
   if (!projectName) return placeholderImg;
-  
+
   // Mapeamento de nomes de projetos para suas imagens
   const projectMap = {
-    "enersi": enersiImg,
+    enersi: enersiImg,
     "salão senac": salaosenacImg,
     "salao senac": salaosenacImg,
-    "recifência": recifenciaImg,
-    "recifencia": recifenciaImg,
+    recifência: recifenciaImg,
+    recifencia: recifenciaImg,
   };
-  
+
   const normalizedName = projectName?.toLowerCase().trim();
   return projectMap[normalizedName] || placeholderImg;
 };
@@ -40,12 +40,12 @@ export default function ProjectsSection() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  
+
   // Estados para adição/edição de projetos
   const [isAddingProject, setIsAddingProject] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
-  
+
   // Estado para novo projeto
   const [newProject, setNewProject] = useState({
     title: "",
@@ -55,13 +55,13 @@ export default function ProjectsSection() {
     github: "",
     figma: "",
   });
-  
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetchProjects();
   }, []);
-  
+
   // Busca os projetos do Firestore
   const fetchProjects = async () => {
     setLoading(true);
@@ -72,22 +72,26 @@ export default function ProjectsSection() {
       const projectsData = data.docs.map((doc) => {
         const projectData = doc.data();
         const projectTitle = projectData.title || "";
-        
+
         // Verificar se é um dos projetos originais para usar a imagem correta
         let imageUrl = projectData.imageUrl || "";
-        
+
         // Se não tiver URL ou a URL não for válida, usar a imagem baseada no título
-        if (!imageUrl || imageUrl.includes("blob:") || imageUrl.includes("/src/assets/")) {
+        if (
+          !imageUrl ||
+          imageUrl.includes("blob:") ||
+          imageUrl.includes("/src/assets/")
+        ) {
           const projectImage = getProjectImage(projectTitle);
           if (projectImage) {
             imageUrl = projectImage;
           }
         }
-        
+
         return {
           id: doc.id,
           ...projectData,
-          imageUrl: imageUrl
+          imageUrl: imageUrl,
         };
       });
 
@@ -106,30 +110,30 @@ export default function ProjectsSection() {
     if (file) {
       // Criamos um objeto URL para o arquivo local (apenas para preview)
       const imageUrl = URL.createObjectURL(file);
-      
+
       // Em uma implementação real, faríamos upload para o Firebase Storage
       // Por enquanto, usamos o URL local para preview
-      
+
       if (isEditing) {
-        setEditingProject({ 
-          ...editingProject, 
-          imageUrl, 
+        setEditingProject({
+          ...editingProject,
+          imageUrl,
           imageFile: file,
           // Armazenamos o nome do arquivo para referência
-          imageName: file.name
+          imageName: file.name,
         });
       } else {
-        setNewProject({ 
-          ...newProject, 
-          imageUrl, 
+        setNewProject({
+          ...newProject,
+          imageUrl,
           imageFile: file,
           // Armazenamos o nome do arquivo para referência
-          imageName: file.name
+          imageName: file.name,
         });
       }
     }
   };
-  
+
   // Adiciona um novo projeto
   const handleAddProject = async () => {
     if (!newProject.title.trim()) {
@@ -151,7 +155,9 @@ export default function ProjectsSection() {
         imageUrl: getProjectImage(newProject.title.trim()),
         imageName: newProject.imageName || "",
         // Processando as tecnologias: dividindo a string por vírgulas e removendo espaços em branco
-        technologies: newProject.technologies ? newProject.technologies.split(',').map(tech => tech.trim()) : [],
+        technologies: newProject.technologies
+          ? newProject.technologies.split(",").map((tech) => tech.trim())
+          : [],
         github: newProject.github || "",
         figma: newProject.figma || "",
         createdAt: new Date().toISOString(),
@@ -183,23 +189,23 @@ export default function ProjectsSection() {
       setError("Erro ao adicionar projeto. Tente novamente.");
     }
   };
-  
+
   // Inicia a edição de um projeto
   const handleEdit = (project) => {
     // Guardamos a URL original da imagem para caso o usuário cancele a edição
     setEditingProject({
       ...project,
-      originalImageUrl: project.imageUrl
+      originalImageUrl: project.imageUrl,
     });
     setIsEditing(true);
   };
-  
+
   // Cancela a edição
   const handleCancelEdit = () => {
     setEditingProject(null);
     setIsEditing(false);
   };
-  
+
   // Salva as alterações de um projeto
   const handleUpdateProject = async () => {
     if (!editingProject || !editingProject.id) {
@@ -218,8 +224,11 @@ export default function ProjectsSection() {
       // Processar tecnologias
       let technologies = [];
       if (editingProject.technologies) {
-        if (typeof editingProject.technologies === 'string') {
-          technologies = editingProject.technologies.split(',').map(tech => tech.trim()).filter(tech => tech);
+        if (typeof editingProject.technologies === "string") {
+          technologies = editingProject.technologies
+            .split(",")
+            .map((tech) => tech.trim())
+            .filter((tech) => tech);
         } else if (Array.isArray(editingProject.technologies)) {
           technologies = editingProject.technologies;
         }
@@ -264,13 +273,13 @@ export default function ProjectsSection() {
       setError("Erro ao atualizar projeto. Tente novamente.");
     }
   };
-  
+
   // Remove um projeto
   const handleDeleteProject = async (id) => {
     if (!window.confirm("Tem certeza que deseja excluir este projeto?")) {
       return;
     }
-    
+
     try {
       setError("");
 
@@ -320,7 +329,7 @@ export default function ProjectsSection() {
         {!isAddingProject && !isEditing && (
           <button
             onClick={() => setIsAddingProject(true)}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-sm"
           >
             Adicionar Projeto
           </button>
@@ -404,7 +413,11 @@ export default function ProjectsSection() {
               />
               <div className="mt-2">
                 <img
-                  src={newProject.imageUrl || getProjectImage(newProject.title) || placeholderImg}
+                  src={
+                    newProject.imageUrl ||
+                    getProjectImage(newProject.title) ||
+                    placeholderImg
+                  }
                   alt="Preview"
                   className="h-32 w-auto object-contain rounded border border-gray-200 p-2"
                   onError={(e) => {
@@ -413,11 +426,12 @@ export default function ProjectsSection() {
                   }}
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  {newProject.imageName || "Nenhuma imagem selecionada. Imagem padrão será usada."}
+                  {newProject.imageName ||
+                    "Nenhuma imagem selecionada. Imagem padrão será usada."}
                 </p>
               </div>
             </div>
-            
+
             <div>
               <label
                 htmlFor="project-technologies"
@@ -512,7 +526,10 @@ export default function ProjectsSection() {
                 id="edit-project-title"
                 value={editingProject.title}
                 onChange={(e) =>
-                  setEditingProject({ ...editingProject, title: e.target.value })
+                  setEditingProject({
+                    ...editingProject,
+                    title: e.target.value,
+                  })
                 }
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white w-full"
                 placeholder="Ex: Meu Projeto"
@@ -531,7 +548,10 @@ export default function ProjectsSection() {
                 id="edit-project-description"
                 value={editingProject.description}
                 onChange={(e) =>
-                  setEditingProject({ ...editingProject, description: e.target.value })
+                  setEditingProject({
+                    ...editingProject,
+                    description: e.target.value,
+                  })
                 }
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white w-full"
                 rows="3"
@@ -539,7 +559,7 @@ export default function ProjectsSection() {
                 required
               />
             </div>
-            
+
             <div>
               <label
                 htmlFor="edit-project-technologies"
@@ -550,12 +570,18 @@ export default function ProjectsSection() {
               <input
                 type="text"
                 id="edit-project-technologies"
-                value={typeof editingProject.technologies === 'string' ? 
-                  editingProject.technologies : 
-                  (Array.isArray(editingProject.technologies) ? 
-                    editingProject.technologies.join(', ') : '')}
+                value={
+                  typeof editingProject.technologies === "string"
+                    ? editingProject.technologies
+                    : Array.isArray(editingProject.technologies)
+                    ? editingProject.technologies.join(", ")
+                    : ""
+                }
                 onChange={(e) =>
-                  setEditingProject({ ...editingProject, technologies: e.target.value })
+                  setEditingProject({
+                    ...editingProject,
+                    technologies: e.target.value,
+                  })
                 }
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white w-full"
                 placeholder="React, Node.js, Firebase, etc."
@@ -579,7 +605,11 @@ export default function ProjectsSection() {
               />
               <div className="mt-2">
                 <img
-                  src={editingProject.imageUrl || getProjectImage(editingProject.title) || placeholderImg}
+                  src={
+                    editingProject.imageUrl ||
+                    getProjectImage(editingProject.title) ||
+                    placeholderImg
+                  }
                   alt="Preview"
                   className="h-32 w-auto object-contain rounded border border-gray-200 p-2"
                   onError={(e) => {
@@ -605,7 +635,10 @@ export default function ProjectsSection() {
                 id="edit-project-github"
                 value={editingProject.github}
                 onChange={(e) =>
-                  setEditingProject({ ...editingProject, github: e.target.value })
+                  setEditingProject({
+                    ...editingProject,
+                    github: e.target.value,
+                  })
                 }
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white w-full"
                 placeholder="https://github.com/seu-usuario/seu-projeto"
@@ -624,7 +657,10 @@ export default function ProjectsSection() {
                 id="edit-project-figma"
                 value={editingProject.figma}
                 onChange={(e) =>
-                  setEditingProject({ ...editingProject, figma: e.target.value })
+                  setEditingProject({
+                    ...editingProject,
+                    figma: e.target.value,
+                  })
                 }
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white w-full"
                 placeholder="https://figma.com/file/..."
@@ -664,9 +700,12 @@ export default function ProjectsSection() {
                       {project.title}
                     </h3>
                     <img
-                      src={typeof project.imageUrl === 'string' && project.imageUrl.startsWith('http') 
-                        ? project.imageUrl 
-                        : getProjectImage(project.title)}
+                      src={
+                        typeof project.imageUrl === "string" &&
+                        project.imageUrl.startsWith("http")
+                          ? project.imageUrl
+                          : getProjectImage(project.title)
+                      }
                       alt={project.title}
                       className="w-16 h-16 object-contain rounded"
                       onError={(e) => {
@@ -678,13 +717,13 @@ export default function ProjectsSection() {
                   <p className="text-gray-600 dark:text-gray-300 mb-3">
                     {project.description}
                   </p>
-                  
+
                   {/* Exibindo as tecnologias como tags */}
                   {project.technologies && project.technologies.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-2">
                       {project.technologies.map((tech, index) => (
-                        <span 
-                          key={index} 
+                        <span
+                          key={index}
                           className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs"
                         >
                           {tech}
@@ -692,7 +731,7 @@ export default function ProjectsSection() {
                       ))}
                     </div>
                   )}
-                  
+
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.github && (
                       <a
