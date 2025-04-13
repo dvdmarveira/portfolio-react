@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseApp = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyAs8aF4pWPymLKDr0Dak5GMXRZlhCJ_amo",
   authDomain: "portfolio-react-10eac.firebaseapp.com",
   projectId: "portfolio-react-10eac",
   storageBucket: "portfolio-react-10eac.firebasestorage.app",
