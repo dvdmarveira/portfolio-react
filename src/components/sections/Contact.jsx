@@ -38,7 +38,7 @@ const Contact = ({ theme }) => {
               onClick={(e) => {
                 e.preventDefault();
                 window.open(
-                  "https://www.linkedin.com/in/deyvidmarques",
+                  "https://www.linkedin.com/in/dvdmarqs",
                   "_blank"
                 );
               }}

@@ -78,7 +78,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 <Person className="navicon" />
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="experience"
                 spy={true}
@@ -91,7 +91,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               >
                 <FileEarmarkCode className="navicon" />
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="projects"

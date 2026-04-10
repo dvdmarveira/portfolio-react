@@ -4,9 +4,10 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebase";
 
 // Importando imagens dos projetos originais
-import enersiImg from "../../assets/imgs/enersi1.png";
+import chatbotImg from "../../assets/imgs/chatbot.png";
 import salaosenacImg from "../../assets/imgs/salaosenac1.png";
 import recifenciaImg from "../../assets/imgs/recifencia1.png";
+import avaImg from "../../assets/imgs/ava.png";
 
 // Importando ícones para navegação
 import arrowIcon from "../../assets/imgs/arrow.png";
@@ -31,7 +32,7 @@ const Projects = ({ theme }) => {
 
     // Mapeamento de nomes de projetos para suas imagens
     const projectMap = {
-      enersi: enersiImg,
+      enersi: chatbotImg,
       "salão senac": salaosenacImg,
       "salao senac": salaosenacImg,
       recifência: recifenciaImg,
@@ -46,36 +47,47 @@ const Projects = ({ theme }) => {
   const originalProjects = [
     {
       id: "original1",
-      title: "Enersi",
+      title: "Bot de atendimento",
       description:
-        "Projeto desenvolvido com o propósito de conectar pessoas que desejam utilizar energia limpa a empresas parceiras que oferecem os seus serviços a preços acessíveis.",
-      imageUrl: enersiImg,
-      technologies: [],
+        "Chatbot desenvolvido para a empresa ABC EVO com foco em atendimento ao time de suporte e aos clientes que integram os seus sistemas com o sistema EVO.",
+      imageUrl: chatbotImg,
+      technologies: ["Atendimento", "Suporte", "Clientes"],
       github: "https://www.github.com/dvdmarveira",
       figma:
-        "https://www.figma.com/proto/cs5qXx8dpzrwS9h8DbBcBz/Untitled?node-id=0-1&p=f&t=t4M7lfAQyG7Nvd8z-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A65&show-proto-sidebar=1",
+        "https://api.abcevo.com/",
+    },
+        {
+      id: "original2",
+      title: "Sistema AVA",
+      description:
+        "Foco no acompanhamento do ciclo de vida do cliente na sua empresa, com disparos no WhatsApp para agendamento de consulta, felicitações de aniversário, marketing e mais.",
+      imageUrl: avaImg,
+      technologies: ["Vendas", "Produtos e serviços", "Clientes"],
+      github: "https://ava-mvp-tau.vercel.app/acesso/ava/autenticacao",
+      figma:
+        "https://ava-mvp-tau.vercel.app/acesso/ava/autenticacao",
     },
     {
-      id: "original2",
+      id: "original3",
       title: "Salão Senac",
       description:
         "Plataforma para o salão de beleza do SENAC que integra agendamento online, registro detalhado de serviços, previsão de retorno e feedback dos clientes.",
       imageUrl: salaosenacImg,
       technologies: [],
-      github: "https://www.github.com/dvdmarveira",
-      figma: "https://www.figma.com/",
+      github: "",
+      figma: "",
     },
-    {
-      id: "original3",
-      title: "Recifência",
-      description:
-        "Plataforma com o propósito de impulsionar a arte local, oferecendo visibilidade aos artistas e conectando-os a possíveis contratantes, seja para eventos, shows etc.",
-      imageUrl: recifenciaImg,
-      technologies: [],
-      github: "https://github.com/dvdmarveira/residencia-recifen",
-      figma:
-        "https://www.figma.com/proto/Fj6KUqp9yevh7zpptNmxbf/Untitled?node-id=0-1&p=f&t=P25MKdFODkksIkft-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=116%3A2&show-proto-sidebar=1",
-    },
+    // {
+    //   id: "original4",
+    //   title: "Recifência",
+    //   description:
+    //     "Plataforma com o propósito de impulsionar a arte local, oferecendo visibilidade aos artistas e conectando-os a possíveis contratantes, seja para eventos, shows etc.",
+    //   imageUrl: recifenciaImg,
+    //   technologies: [],
+    //   github: "https://github.com/dvdmarveira/residencia-recifen",
+    //   figma:
+    //     "https://www.figma.com/proto/Fj6KUqp9yevh7zpptNmxbf/Untitled?node-id=0-1&p=f&t=P25MKdFODkksIkft-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=116%3A2&show-proto-sidebar=1",
+    // },
   ];
 
   // Buscar projetos do Firestore ao carregar o componente
@@ -368,7 +380,7 @@ const Projects = ({ theme }) => {
                 )}
 
                 <div className="flex justify-center gap-4">
-                  {project.github && (
+                  {/* {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
@@ -378,7 +390,7 @@ const Projects = ({ theme }) => {
                     >
                       Github
                     </a>
-                  )}
+                  )} */}
                   {project.figma && (
                     <a
                       href={project.figma}
@@ -387,7 +399,7 @@ const Projects = ({ theme }) => {
                       className="px-6 py-2 bg-transparent border-2 border-gray-300 dark:border-[var(--container-border)] rounded-xl text-[var(--secondary-color-2)] dark:text-[var(--secondary-color)] text-sm font-bold hover:bg-gray-500
               hover:text-white hover:border-transparent dark:hover:bg-gray-800 transition-colors"
                     >
-                      Figma
+                      Ver projeto
                     </a>
                   )}
                 </div>

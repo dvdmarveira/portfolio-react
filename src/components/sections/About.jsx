@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebase";
 import sobreMimImg from "../../assets/imgs/sobremim.png";
+import vitoriaImg from "../../assets/imgs/vitoria.png";
 import experienceIcon from "../../assets/imgs/experience.png";
 import experienceDarkIcon from "../../assets/imgs/experience_dark.png";
 import educationIcon from "../../assets/imgs/education.png";
@@ -44,11 +45,18 @@ const About = ({ theme }) => {
 
       <div className="flex flex-col md:flex-row w-full max-w-6xl justify-between items-center gap-4 md:gap-16">
         {/* Imagem de perfil */}
-        <div className="w-full md:w-1/3 flex justify-center">
+        {/* <div className="w-full md:w-1/3 flex justify-center">
           <img
             src={sobreMimImg}
             alt="Foto do perfil"
             className="w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover"
+          />
+        </div> */}
+        <div className="w-full md:w-1/3 flex justify-center">
+          <img
+            src={vitoriaImg}
+            alt="Foto vitória"
+            className="w-64 md:w-80 h-auto object-contain"
           />
         </div>
 
@@ -62,9 +70,9 @@ const About = ({ theme }) => {
                 <Trophy className="text-2xl text-[var(--secondary-color)]" />
               </div>
               <h3 className="text-lg font-medium mb-1">Experiência</h3>
-              <p className="text-center">1+ ano</p>
+              <p className="text-center">3 anos</p>
               <p className="text-center text-sm">
-                Projetos acadêmicos e competições
+                Empresas e competições
               </p>
             </div>
 
@@ -93,11 +101,8 @@ const About = ({ theme }) => {
               <p className="text-[var(--secondary-color-2)] text-justify">
                 {aboutData?.description ||
                   "Proatividade e curiosidade são características que me definem, " +
-                    "tanto na área em que atuo quanto na forma como encaro a vida. " +
-                    "Explorar novos aprendizados e buscar evolução constante são " +
-                    "pilares fundamentais para o meu crescimento pessoal e " +
-                    "profissional, acreditando sempre que dedicação e esforço são a " +
-                    "base para bons resultados."}
+                    "tanto na minha carreira quanto na forma como encaro a vida. " +
+                    "Levei o primeiro lugar na maratona de inovação aberta Hacker Cidadão 13.0, promovida pela Prefeitura da Cidade de Recife, EMPREL e Sebrae PE com o projeto NavegaVis, um sistema de navegação indoor para pessoas com deficiência visual."}
               </p>
             )}
           </div>

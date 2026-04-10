@@ -49,7 +49,7 @@ Caso queira entrar em contato, me encontre em:
 
 - 🌐 [Portfólio](https://dvdmarveira.netlify.app/)
 - 📧 Email: dvdmarveira@gmail.com
-- 💼 [LinkedIn](https://linkedin.com/in/deyvidmarques)
+- 💼 [LinkedIn](https://linkedin.com/in/dvdmarqs)
 
 Vamos bater um papo? Qualquer feedback é bem-vindo. 🚀
 

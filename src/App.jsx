@@ -14,6 +14,7 @@ import Technologies from "./components/sections/Technologies";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer";
+import WhatsappButton from "./components/WhatsappButton";
 import { initializeFirestoreData } from "./services/initializeFirestore";
 
 function App() {
@@ -68,11 +69,12 @@ function App() {
                 <main>
                   <Profile />
                   <About theme={theme} />
-                  <Technologies theme={theme} />
+                  {/* <Technologies theme={theme} /> */}
                   <Projects theme={theme} />
                   <Contact theme={theme} />
                 </main>
                 <Footer />
+                <WhatsappButton />
               </>
             }
           />

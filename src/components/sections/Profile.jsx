@@ -9,7 +9,7 @@ const Profile = () => {
 
   useEffect(() => {
     const typed = new Typed(typedElement.current, {
-      strings: ["Desenvolvedor", "Freelancer"],
+      strings: ["Desenvolvedor Fullstack", "Empreendedor"],
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 2000,
@@ -54,7 +54,7 @@ const Profile = () => {
             onClick={(e) => {
               e.preventDefault();
               window.open(
-                "https://www.linkedin.com/in/deyvidmarques",
+                "https://www.linkedin.com/in/dvdmarqs",
                 "_blank"
               );
             }}
@@ -72,7 +72,7 @@ const Profile = () => {
           >
             <Github className="text-2xl text-[color-mix(in_srgb,var(--terciary-color),transparent_30%)] hover:text-[#0563bb]" />
           </a>
-          <a
+          {/* <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
@@ -81,7 +81,7 @@ const Profile = () => {
             title="Currículo"
           >
             <FileEarmarkPersonFill className="text-2xl text-[color-mix(in_srgb,var(--terciary-color),transparent_30%)] hover:text-[#0563bb]" />
-          </a>
+          </a> */}
         </div>
       </div>
     </section>
