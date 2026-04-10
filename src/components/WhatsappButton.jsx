@@ -1,6 +1,6 @@
 import React from "react";
 
-const whatsappNumber = "81985461063";
+const whatsappNumber = "5581985461063";
 const defaultMessage = encodeURIComponent("Olá! Vi seu portfólio e gostaria de conversar.");
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
 
