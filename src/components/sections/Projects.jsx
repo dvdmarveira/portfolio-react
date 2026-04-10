@@ -47,7 +47,7 @@ const Projects = ({ theme }) => {
   const originalProjects = [
     {
       id: "original1",
-      title: "Bot de atendimento",
+      title: "Bot de Atendimento",
       description:
         "Chatbot desenvolvido para a empresa ABC EVO com foco em atendimento ao time de suporte e aos clientes que integram os seus sistemas com o sistema EVO.",
       imageUrl: chatbotImg,
@@ -281,7 +281,7 @@ const Projects = ({ theme }) => {
                       )}
 
                     <div className="flex justify-center gap-4">
-                      {project.github && (
+                      {/* {project.github && (
                         <a
                           href={project.github}
                           target="_blank"
@@ -291,7 +291,7 @@ const Projects = ({ theme }) => {
                         >
                           Github
                         </a>
-                      )}
+                      )} */}
                       {project.figma && (
                         <a
                           href={project.figma}
@@ -300,7 +300,7 @@ const Projects = ({ theme }) => {
                           className="px-6 py-2 bg-transparent border-2 border-gray-300 dark:border-[var(--container-border)] rounded-xl text-[var(--secondary-color-2)] dark:text-[var(--secondary-color)] text-sm font-bold hover:bg-gray-500
                   hover:text-white hover:border-transparent dark:hover:bg-gray-800 transition-colors"
                         >
-                          Figma
+                          Ver projeto
                         </a>
                       )}
                     </div>
